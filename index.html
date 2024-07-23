@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <title>地圖 - 旅館</title>
+    <style>
+        #HotelList {
+            overflow: scroll;
+            height: 90vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <div class="col-3 p-2">
+                <div class="mb-3">
+                    <select name="city" id="city" class="form-select">
+                        <option value="" class="" disabled selected>----請選擇縣市---</option>
+                        <option value="台中市">台中市</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select name="town" id="town" class="form-select">
+                        <option value="" class="" disabled selected>----請選擇鄉鎮區---</option>
+                        <option value="西屯區">西屯區</option>
+                    </select>
+                </div>
+                <ul class="list-group" id="HotelList">
+                    <li class="list-group-item">
+                        <div class="mb-3">
+                            <img src="images/landscape01.avif" class="img-fluid shadow-lg" alt="">
+                        </div>
+                        <div class="h3">名稱: XXXX</div>
+                        <div class="h3">電話: XXX</div>
+                        <div class="h3">地址: XXXX</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-9">
+                <div id="map" class="vh-100"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        var CityCountyData, HotelData;
+        var SelectCity, SelectTown;
+        var map;
+        $(function () {
+            //檢查cookie 是否已存在uid 並確認是否合法
+            if (getCookie("UID01") != "") {
+                //uid傳至後端檢查是否合法
+                //轉換成json格式
+                var dataJSON = {}; //物件
+                dataJSON["uid01"] = getCookie("UID01");
+
+                console.log(JSON.stringify(dataJSON));
+                //傳遞至後端api
+                $.ajax({
+                    type: "POST",
+                    url: "member_check_uid-api.php",
+                    data: JSON.stringify(dataJSON),
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: showdata_check_uid,
+                    error: function () {
+                        alert("error-member_check_uid-api.php");
+                    }
+                });
+
+            } else {
+                alert("必須先登入會員!");
+                location.href = "20240510-SPA.html";
+            }
+
+            //draw map
+            map = L.map('map').setView([24.171259, 120.6098663], 10);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([24.171259, 120.6098663]).addTo(map)
+                .bindPopup('<h1>A pretty CSS popup</h1>.<br> Easily customizable.')
+                .openPopup();
+
+
+            $.ajax({
+                type: "GET",
+                url: "js/CityCountyData.json",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    console.log(data);
+                    CityCountyData = data;
+                },
+                error: function () {
+                    alert("error-js/CityCountyData.json");
+                }
+            });
+
+            //取得hotel資料
+            $.ajax({
+                type: "GET",
+                url: "js/hotel_C_f.json",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    HotelData = data.XML_Head.Infos.Info;
+                },
+                error: function () {
+                    alert("error-hotel_C_f.json");
+                }
+            });
+
+            console.log(HotelData);
+
+            //產生縣市選單
+            $("#city").empty();
+            $("#city").append('<option value="" class="" disabled selected>----請選擇縣市---</option>');
+            CityCountyData.forEach(function (item) {
+                var strHTML = '<option value="' + item.CityName + '">' + item.CityName + '</option>';
+                $("#city").append(strHTML);
+            });
+
+            //監聽縣市選單
+            $("#city").change(function () {
+                console.log($(this).val());
+                SelectCity = $(this).val();
+
+                CityCountyData.forEach(function (item) {
+                    if (item.CityName == SelectCity) {
+                        console.log(item);
+
+                        $("#town").empty();
+                        $("#town").append('<option value="" class="" disabled selected>----請選擇鄉鎮區---</option>');
+                        item.AreaList.forEach(function (item01) {
+                            var strHTML = '<option value="' + item01.AreaName + '">' + item01.AreaName + '</option>';
+                            $("#town").append(strHTML);
+                        });
+                    }
+                });
+            });
+
+
+            //監聽鄉鎮區選單
+            $("#town").change(function () {
+                console.log($(this).val());
+                SelectTown = $(this).val();
+
+                //過濾縣市與鄉鎮區
+                $("#HotelList").empty();
+                removeMarker();
+                HotelData.forEach(function (item) {
+                    if (item.Region == SelectCity && item.Town == SelectTown) {
+                        console.log(item);
+                        var strHTML = '<li class="list-group-item"><div class="mb-3"><img src="' + item.Picture1 + '" class="img-fluid shadow-lg" alt=""></div><div class="h3">名稱: ' + item.Name + '</div><div class="h3">電話: ' + item.Tel + '</div><div class="h3">地址: ' + item.Add + '</div></li>';
+
+                        $("#HotelList").append(strHTML);
+
+
+                        //產生map marker
+                        var bindPopupHTML = '<img src="' + item.Picture1 + '" class="img-fluid"><div class="h5">店家名稱: ' + item.Name + '</div><div class="h5">店家電話: ' + item.Tel + '</div><div class="h5">店家地址: ' + item.Add + '</div>';
+                        L.marker([item.Py, item.Px]).addTo(map)
+                            .bindPopup(bindPopupHTML)
+                            .openPopup();
+                    }
+                });
+            });
+        });
+
+        function showdata_check_uid(data) {
+            console.log(data);
+            if (data.state) {
+                //顯示登入者歡迎資訊
+                $("#s02_user_text").html('歡迎會員: <span class="h2 text-success fw-900 ">' + data.data.Username + '</span> ');
+
+                //顯示登出按鈕
+                $("#s02_logout_btn").removeClass("d-none");
+            }
+            else {
+                location.href = "20240510-SPA.html";
+            }
+        }
+
+
+        //清除marker
+        function removeMarker() {
+            map.eachLayer(function (layer) {
+                if (layer instanceof L.Marker) {
+                    map.removeLayer(layer)
+                }
+            });
+        }
+
+        //form w3c
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+
+</html>
