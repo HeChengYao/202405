@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch8 練習二</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        .bg-cover{
+            background-position: center center; 
+            background-size: cover;
+        }
+        .display-2{
+            text-align: center;
+            line-height: 800px;
+            font-weight: 900;
+        }
+        .display-2 a{
+            text-decoration: none;
+            color: aliceblue;
+        }
+        .display-2 a:hover{
+            color: aquamarine;
+        }
+        .row_03{
+            background-image: url(images/user01.avif);
+        }
+        .row_03:hover{
+            background-image: url(images/user02.avif);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 bg-cover" style="background-image: url(images/landscape01.avif); height: 280px;"></div>
+            <div class="col-md-4 bg-cover" style="background-image: url(images/landscape02.avif); height: 280px;"></div>
+            <div class="col-md-4 bg-cover" style="background-image: url(images/landscape03.avif); height: 280px;"></div>
+        </div>
+        <div class="row vh-100">
+            <div class="col-md-3">
+                <div class="row h-100">
+                    <div class="h-50 bg-cover" style="background-image: url(images/landscape025.avif);"></div>
+                    <div class="h-50 bg-cover" style="background-image: url(images/landscape03.avif);"></div>
+                </div>
+            </div>
+            <div class="col-md-6 bg-info bg-cover" style="background-image: url(images/landscape04.avif);"></div>
+            <div class="col-md-3">
+                <div class="row h-100">
+                    <div class="h-50 bg-cover" style="background-image: url(images/landscape05.avif);"></div>
+                    <div class="h-50 bg-cover" style="background-image: url(images/landscape07.avif);"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height: 800px;">
+            <div class="col-md-3 bg-cover" style="background-image: url(images/landscape08.avif);">
+                <div class="display-2"><a href="">功能01</a></div>
+            </div>
+            <div class="col-md-3 bg-cover" style="background-image: url(images/landscape09.avif);">
+                <div class="display-2"><a href="">功能02</a></div>
+            </div>
+            <div class="col-md-3 bg-cover row_03">
+                <div class="display-2"><a href="">功能03</a></div>
+            </div>
+            <div class="col-md-3 bg-cover" style="background-image: url(images/landscape11.avif);">
+                <div class="display-2"><a href="">功能04</a></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

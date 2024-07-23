@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+TC:wght@100..900&display=swap');
+body {
+    font-family: "Noto Sans TC", sans-serif;
+}
+.fw-900{
+    font-weight: 900;
+}
+.fw-800{
+    font-weight: 800;
+}
+.fw-700{
+    font-weight: 700;
+}
+.fw-600{
+    font-weight: 600;
+}
+.fw-500{
+    font-weight: 500;
+}
+.fw-400{
+    font-weight: 400;
+}
+.fw-300{
+    font-weight: 300;
+}
+.fw-200{
+    font-weight: 200;
+}
+.fw-100{
+    font-weight: 100;
+}
+:root{
+    --bgcolor01: #F5E2D4;
+    --mycolor01: #EB8F90; 
+    --mycolor02: #FFB471; 
+    --mycolor03: #ADBED2;
+    --mycolor04: #970ea3;  
+    --mycolor05: #5aa6e4; 
+    --textcolor01: #12406A; 
+    --button01: #BB7748;
+    --bg-coclor01: #FF6347;
+}
+.bg-cover{
+    background-position: center center;
+    background-size: cover;
+}
+.text-color01{
+    color: var(--bg-coclor01);
+}
+
+@media screen and (max-width: 768px){
+    .table-rwd thead{
+        display: none;
+    }
+    .table-rwd tbody tr{
+        display: block;
+        border: 3px solid var(--mycolor04);
+        margin-top: 5px;
+    }
+    .table-rwd tbody tr td{
+        display: block;
+        overflow: hidden;
+    }
+    .table-rwd tbody tr td::before{
+        content: attr(data-th)" : ";
+        font-size: 18px;
+        font-weight: 900;
+        color: blue;
+        display: block;
+        float: left;
+        width: 6em;
+        text-align: right;
+        padding-right: 1em;
+    }
+    .table-rwd tbody tr td span.table-col{
+        display: block;
+        float: left;
+        width: calc(100% - 7em);
+    }
+}

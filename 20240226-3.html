@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/myall.css">
+    <title>自我練習</title>
+    <style>
+        body{
+            background-color: #8a8888;
+        }
+        .wrapper{
+            width: 1024px;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+        }
+        .banner .logo{
+            width: 100%;
+            height: 180px;
+            background-color: var(--mycolor02);
+            background-image: url(images/landscape01.avif);
+            background-position: center center;
+            background-size: cover;
+        }
+        /* .banner img{
+            width: 100%;
+        } */
+        .banner nav{
+            background-color: #e07979;
+            text-align: center;
+        }
+        .banner nav ul{
+            display: inline-block;
+        }
+        .banner nav ul li{
+            float: left;
+            list-style-type: none;
+        }
+        .banner nav ul li a{
+            text-decoration: none;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color:black;
+        }
+        .banner nav ul li a:hover{
+            background-color: #e92c2c;
+            color: bisque;
+            font-weight: 100;
+        }
+        .content .content_in{
+            background-color: #e3e2e5;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            padding-left: 50px;
+            padding-right: 50px;
+            margin-top: 10px;
+        }
+        .content .content_in h1{
+            color: #e92c2c;
+            font-size: 36px;
+        }
+        .content .content_in p{
+            font-size: 24px;
+        }
+        .content .content_in a{
+            background-color: #300303;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            text-decoration: none;
+            color: #d3d1d1;
+            font-size: 24px;
+        }
+        .content .content_in a:hover{
+            background-color: #26c95c;
+        }
+        .footer{
+            background-color: #7a5353;
+            text-align: center;
+            padding-top: 4px;
+            padding-bottom: 3px;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        .footer .footer_in ul{
+            display: inline-block;
+        }
+        .footer .footer_in ul li{
+            float: left;
+            list-style-type: none;
+        }
+        .footer .footer_in ul li a{
+            text-decoration: none;
+            color: azure;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+        .content .side_bar{
+            float: left;
+            background-color: #ca7777;
+            width: 280px;
+            height: 600px;
+        }
+        .content .side_bar ul li{
+            list-style-type: none;
+        }
+        .content .side_bar ul li a{
+            text-decoration: none;
+            display:block;
+            background-color: #c21919;
+            width: 200px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-top: 5px;
+            text-align: center;
+        }
+        @media screen and (max-width: 768px){
+            .banner .logo{
+                background-image: url(images/landscape02.avif);
+            }
+            .wrapper{
+                width: 100%;
+            }
+            .content .side_bar{
+                float: none;
+                width: 100%;
+                height: auto;
+            }
+            .content .side_bar ul{
+                display: inline-block;
+            }
+            .content .side_bar ul li{
+                float: left;
+            }
+            .content .content_in{
+                background-color: var(--mycolor02);
+            }
+            .content .content_in h1{
+                color: var(--mycolor04);
+                font-size: 24px;
+            }
+            .content .content_in p{
+                font-size: 14px;
+            }
+            .footer .footer_in{
+                display: none;
+            }
+        }
+        @media screen and (min-width: 1024px){
+            .banner .logo{
+                background-image: url(images/landscape03.avif);
+            }
+            .content .side_bar{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="banner">
+            <!-- <img src="https://fakeimg.pl/1440x400/200/?text=logo_01"> -->
+            <div class="logo"></div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="fw-900">首頁</a></li>
+                    <li><a href="#">最新消息</a></li>
+                    <li><a href="#">合作店家</a></li>
+                    <li><a href="#">關於我們</a></li>
+                    <li><a href="#">聯絡我們</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <div class="side_bar">
+                <ul>
+                    <li><a href="#">選單一</a></li>
+                    <li><a href="#">選單二</a></li>
+                    <li><a href="#">選單三</a></li>
+                    <li><a href="#">選單四</a></li>
+                </ul>
+            </div>
+            <div class="content_in">
+                <h1 class="fw-900">歡迎光臨</h1>
+                <p>其他的通用態度不願無派瀏覽器，英雄多媒體檢驗卻是總算透明買賣創業相關內容，覺得網上電視台多少理解見面一半官員，越來越儘快那麼多驚訝推進感到，多次數碼，中壢執行。</p>
+                <p class="fw-900">幹部女朋友鮮花製造人數鄉民們會計，來到如果，官員一座女人，進行社會時尚並不回家我都為何本來發佈你好您可以系列感覺到，改善頓時的確討論聯絡人細節水果，做什麼國語咱們相應目的贏得建設商業我一，您是南方固定導演，咖啡同意春天請您陷入本書中心帝國教授輕鬆全國讓他歐美，最多絶對一定要被人行業如果您優勢說了無線躺在，呵呵機構好多技術一家，官方平衡厲害表面心理通用開了激。</p>
+                <p>相關內容星座裝飾確保電池沒人職工安裝，報名新手手段，天下壓縮希望，命令啟動一天驅動負責在這裡意外全家隨時深深交給團體校。</p>
+                <a href="#">了解更多</a>
+            </div>
+        </div>
+        <div class="footer">
+            <p>跨平台班級製作 202402</p>
+            <div class="footer_in">
+                <ul>
+                    <li><a href="#">| 友站01</a></li>
+                    <li><a href="#">| 友站02</a></li>
+                    <li><a href="#">| 友站03</a></li>
+                    <li><a href="#">| 友站04</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

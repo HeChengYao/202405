@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch4 圖片相關</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        .demo01{
+            width: 80%;
+            border: 2px solid var(--mycolor01);
+            padding: 15px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="display-3 fw-900">1. img-fluid</div>
+    <div class="demo01">
+        <!-- <img src="images/landscape01.avif" class="img-fluid" alt=""> -->
+        <img src="https://fakeimg.pl/600x400/200" class="img-fluid">
+        <img src="https://fakeimg.pl/600x400/200" width="100%">
+    </div>
+
+    <div class="display-3 fw-900">2. img-thumbnail </div>
+    <div class="demo01">
+        <img src="images/landscape01.avif" alt="" class="img-fluid img-thumbnail">
+    </div>
+
+    <div class="display-3 fw-900">3. 圖片置中 </div>
+    <img src="https://fakeimg.pl/300x200/200" class="img-fluid img-thumbnail d-block mx-auto">
+
+    <div class="text-center">
+        <img src="https://fakeimg.pl/300x200/200" class="img-fluid img-thumbnail">
+    </div>
+
+    <div class="display-3 fw-900">4. 背景圖</div>
+    <div class="demo01" style="background-image: url(images/landscape02.avif); height: 280px; background-position: center center; background-size: cover;"></div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

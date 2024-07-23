@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch5 表格</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        @media screen and (max-width: 768px){
+            .table-rwd thead{
+                display: none;
+            }
+            .table-rwd tbody tr{
+                display: block;
+                border: 2px solid var(--mycolor04);
+                margin-top: 5px;
+            }
+            .table-rwd tbody tr td{
+                display: block;
+                overflow: hidden;
+            }
+            .table-rwd tbody tr td::before{
+                content: attr(data-th) " : ";
+                color:brown;
+                font-weight: 900;
+                display: block;
+                float: left;
+                /* width: 20%; */
+                width:6em;
+                text-align: right;
+                padding-right: 1em;
+            }
+            .table-rwd tbody tr td span.table-col{
+                display: block;
+                float: left;
+                /* width: 80%; */
+                width: calc(100% - 6em);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <table class="table table-bordered table-striped table-hover table-sm table-rwd">
+                    <thead class="table-dark">
+                        <tr>
+                            <th width="5%">編號</th>
+                            <th width="10%">商品名稱</th>
+                            <th width="10%">商品價格</th>
+                            <th width="10%">商品數量</th>
+                            <th width="65%">商品備註</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-th="編號"><span class="table-col">001</span></td>
+                            <td data-th="商品名稱"><span class="table-col">美式咖啡01</span></td>
+                            <td data-th="商品價格"><span class="table-col">60</span></td>
+                            <td data-th="商品數量"><span class="table-col">10</span></td>
+                            <td data-th="商品備註"><span class="table-col">灌水醫院騎士面對信箱從此說完發出股權模擬提醒，智能指揮原料穩定之家，懷疑依舊很少素質熱情規格不明白不限很快解壓密碼部門有一，無論微微，首次綠色隊員進步贏得什麼是新聞，滿足不過系統角色妻子上漲，黑色學。</span></td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>美式咖啡02</td>
+                            <td>60</td>
+                            <td>10</td>
+                            <td>很好喝!</td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>美式咖啡03</td>
+                            <td>60</td>
+                            <td>10</td>
+                            <td>很好喝!</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

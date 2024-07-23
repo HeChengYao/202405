@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習01. 使用CSS語法配置版面</title>
+    <style>
+        body{
+            background-color: #eee7de;
+        }
+        .wapper{
+            width: 1024px;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .wapper .banner img{
+            width: 100%;
+        }
+        nav{
+            background-color: #993e3e;
+            text-align: center;
+        }
+        nav ul{
+            display: inline-block;
+        }
+        nav ul li{
+            float: left;
+            list-style-type: none;
+        }
+        nav ul li a{
+            /* background-color: burlywood; */
+            text-decoration: none;
+            color: azure;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        nav ul li a:hover{
+            background-color: blueviolet;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: aqua;
+        }
+        .content .content_in{
+            text-align: center;
+            background-color: #f0d9a8;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .content .content_in h1{
+            color: #993e3e;
+            font-size: 48px;
+        }
+        .content .content_in p{
+            font-size: 22px;
+        }
+        .content .content_in a{
+            background-color: #e461b8;
+            text-decoration: none;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            color: #f0d9a8;
+        }
+        .content .content_in a:hover{
+            background-color: #f0d9a8;
+            color: #e461b8;
+        }
+        .content{
+            margin-top: 15px;
+        }
+        .footer{
+            background-color: #91e4e7;
+            text-align: center;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            color: aliceblue;
+            margin-top: 10px;
+        }
+        .footer .footer_in ul{
+            display: inline-block;
+        }
+        .footer .footer_in ul li{
+            float: left;
+            list-style-type: none;
+        }
+        .footer .footer_in ul li a{
+            text-decoration: none;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: azure;
+        }
+        .footer .footer_in ul li a:hover{
+            color: #993e3e;
+        }
+    </style>
+</head>
+<body>
+    <div class="wapper">
+        <div class="banner">
+            <img src="https://fakeimg.pl/1440x220/200/?text=logo">
+            <nav>
+                <ul>
+                    <li><a href="#">首頁</a></li>
+                    <li><a href="#">最新消息</a></li>
+                    <li><a href="#">合作店家</a></li>
+                    <li><a href="#">關於我們</a></li>
+                    <li><a href="#">聯絡我們</a></li>
+                </ul>                
+            </nav>
+        </div>
+        <div class="content">
+            <div class="content_in">
+                <h1>歡迎光臨</h1>
+                <p>頭銜打算，並不其它服裝關鍵字再也作家關係成為同事水果我不回事顧問，用途對外一方面，有了寫出來失望練習，打電話滿意能在探索說什麼作業程式職工電力，夥伴英雄，困難。</p>
+                <p>貢獻完美一批對你平方米郵箱找到威脅詳細，驚人即可豐富長期超過，妹妹影片團體資料很容易高級彷彿適用很少舉報，你沒有而是不要在這個唱片，變得天堂激動主角鬱悶收益篇文章給我們三人，不出是由，改進發達從此最好的做好還在貢獻，遊戲半年，旅遊足夠物理空中實現瀏覽新竹司機天使工作人員硬盤透明，不然面前幾乎分為看起來我都，故障試驗經。</p>
+                <p>不滿萬華市場也是風險需求職責專用電視劇世紀溫柔，相機只見可憐大家理想很大屬性，存在清晰我就呼吸出席，消費人間，消除遠程。</p>
+                <a href="#">了解更多</a>
+            </div>
+        </div>
+        <div class="footer">
+            <p>跨平台班級製作 202402</p>
+            <div class="footer_in">
+                <ul>
+                    <li><a href="#">| 友站01</a></li>
+                    <li><a href="#">| 友站02</a></li>
+                    <li><a href="#">| 友站03</a></li>
+                    <li><a href="#">| 友站04</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

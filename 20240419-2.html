@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch11 程式練習(js)</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="box01" id="mytext01"></div>
+            </div>
+            <div class="col-12">
+                <div class="box02" id="mytext02"></div>
+            </div>
+            <div class="col-12">
+                <h1>01. 利用js顯示一張圖片</h1>
+                <div class="box03 border border-3 p-2" id="myimg01"></div>
+            </div>
+            <div class="col-12">
+                <h1>02. 利用js顯示下列排版</h1>
+                <div class="box04 border border-3 p-2" id="myimg02"></div>
+            </div>
+            <div class="col-12">
+                <h1>03. 利用js顯示10張圖片</h1>
+                <div class="box04 border border-3 p-2" id="myimg03"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        //主程式
+        $(function () {
+            // for(var i = 1; i < 10; i++){
+            //     for(var j=1; j < 10; j++){
+            //         console.log(i + "*" + j + " = " + i*j);
+            //     }
+            // }
+            $("#mytext01").text("<h1>hello world!</h1>");
+            $("#mytext02").html("<h1>hello world!</h1>");
+            $("#myimg01").html('<img src="images/cake01.avif" class="img-fluid">');
+            // $("#myimg01").html("<img src='images/cake01.avif' class='img-fluid'>");
+            //<div class="h3 text-center text-danger fw-900">好吃的蛋糕</div>
+            // <img src="images/cake02.avif" class="img-fluid" alt="">   
+            $("#myimg02").html('<div class="h3 text-center text-danger fw-900">好吃的蛋糕</div><img src="images/cake02.avif" class="img-fluid" alt="">');
+
+            for (var i = 0; i < 10; i++) {
+                console.log(i);
+                $("#myimg03").append('<img src="images/cake0'+ i +'.avif" class="img-fluid">');
+            }
+
+        });
+    </script>
+</body>
+
+</html>

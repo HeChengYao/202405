@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch8 練習三</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        .bg-cover {
+            background-position: center center;
+            background-size: cover;
+        }
+        .timeline-section{
+            position: relative;
+        }
+        .timeline-section::before{
+            position: absolute;
+            content: "";
+            top: 10px;
+            bottom: 10px;
+            width: 5px;
+            background-color: var(--mycolor04);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .timeline-section-pointer{
+            position: relative;
+        }
+        .timeline-section-pointer::before{
+            position: absolute;
+            content: "";
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: #FFF;
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid #33292f;
+        }
+        .timeline-section-pointer:hover::before{
+            width: 25px;
+            height: 25px;
+            border: 8px solid #b0dd0b;
+        }
+        @media screen and (max-width: 768px){
+            .timeline-section::before ,.timeline-section-pointer::before{
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="timeline-section">
+            <div class="row timeline-section-pointer">
+                <div class="col-md-6 mt-3">
+                    <div class="myimg bg-cover" style="background-image: url(images/cake02.avif); height: 260px;"></div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="h3 text-center">好吃的蛋糕001</div>
+                    <p class="p-3">事情，先進上傳調節歡迎見面顯卡嘿嘿警察今年，女士擔心求購任何人，前往很快，這段我覺得。</p>
+                    <p class="p-3">對此電腦件本帖引進深深旅遊男生商城，千萬屬性嘉義主動科技承認堅決，總部軟體說過每一個設定已被首次，自主。</p>
+                </div>
+            </div>
+            <div class="row flex-row-reverse timeline-section-pointer">
+                <div class="col-md-6 mt-3">
+                    <div class="myimg bg-cover" style="background-image: url(images/cake03.avif); height: 260px;"></div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="h3 text-center">好吃的蛋糕002</div>
+                    <p>事情的人魅力浪漫記住很多就有表現職位似乎用戶名患者，對待女士它的更新時間親愛的，先進上傳調節歡迎見面顯卡嘿嘿警察今年，女士擔心求購任何人，前往很快，這段我覺得。</p>
+                    <p>對此電腦懷疑春天事項公開是因為精神加入，都有戰爭窗口巨大將在新人整個生意意外努力模糊，特殊這時安徽電子郵件本帖引進深深旅遊男生商城，千萬屬性嘉義主動科技承認堅決，總部軟體說過每一個設定已被首次，自主。
+                    </p>
+                </div>
+            </div>
+            <div class="row timeline-section-pointer">
+                <div class="col-md-6 mt-3">
+                    <div class="myimg bg-cover" style="background-image: url(images/cake04.avif); height: 260px;"></div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="h3 text-center">好吃的蛋糕003</div>
+                    <p>事情的人魅力浪漫記住很多就有表現職位似乎用戶名患者，對待女士它的更新時間親愛的，先進上傳調節歡迎見面顯卡嘿嘿警察今年，女士擔心求購任何人，前往很快，這段我覺得。</p>
+                    <p>對此電腦懷疑春天事項公開是因為精神加入，都有戰爭窗口巨大將在新人整個生意意外努力模糊，特殊這時安徽電子郵件本帖引進深深旅遊男生商城，千萬屬性嘉義主動科技承認堅決，總部軟體說過每一個設定已被首次，自主。
+                    </p>
+                </div>
+            </div>
+            <div class="row flex-row-reverse timeline-section-pointer">
+                <div class="col-md-6 mt-3">
+                    <div class="myimg bg-cover" style="background-image: url(images/cake05.avif); height: 260px;"></div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="h3 text-center">好吃的蛋糕004</div>
+                    <p>事情的人魅力浪漫記住很多就有表現職位似乎用戶名患者，對待女士它的更新時間親愛的，先進上傳調節歡迎見面顯卡嘿嘿警察今年，女士擔心求購任何人，前往很快，這段我覺得。</p>
+                    <p>對此電腦懷疑春天事項公開是因為精神加入，都有戰爭窗口巨大將在新人整個生意意外努力模糊，特殊這時安徽電子郵件本帖引進深深旅遊男生商城，千萬屬性嘉義主動科技承認堅決，總部軟體說過每一個設定已被首次，自主。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

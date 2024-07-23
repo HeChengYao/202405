@@ -1,0 +1,16 @@
+:root{
+    --mycolor01: #FAA98B;
+    --mycolor02: #E6AECF;
+    --mycolor03: #AEE0DD;
+    --mycolor04: #01ACBC;
+    --mycolor05: #7F9871;
+    --mycolor06: #9795A3;
+    --mycolor07: #C94F44;
+    --mycolor08: #261326;
+    --mytext01: #030305;
+    --mytext02: #F2F4EF;
+}
+.bg-cover{
+    background-position: center center;
+    background-size: cover;
+}

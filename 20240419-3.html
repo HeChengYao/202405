@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch11 表單(js程式練習)</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-3">
+                <div class="mb-3">
+                    <label for="username" class="form-label">名字</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="字數不得超過5字!">
+                    <div class="valid-feedback">輸入名字符合規則!</div>
+                    <div class="invalid-feedback">輸入名字不符合規則!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="nickname" class="form-label">暱稱</label>
+                    <input type="text" class="form-control" id="nickname" name="nickname" placeholder="暱稱字數2~8字!">
+                    <div class="form-text">請輸入暱稱!</div>
+                    <div class="valid-feedback">暱稱符合規則!</div>
+                    <div class="invalid-feedback">暱稱不符合規則!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="form-label">年齡</label>
+                    <input type="number" class="form-control" id="age" name="age" value="18">
+                    <div class="form-text">請輸入年齡!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="edu" class="form-label">學歷</label>
+                    <select name="edu" id="edu" class="form-select">
+                        <option value="研究所">研究所</option>
+                        <option value="大學(專科)">大學(專科)</option>
+                        <option value="高中職">高中職</option>
+                        <option value="其它">其它</option>
+                    </select>                    
+                </div>
+                <div class="mb-3">
+                    <label for="datalist" class="form-label">餐點</label>
+                    <input type="text" name="datalist" id="datalist" class="form-control" list="fooddata">
+                    <datalist id="fooddata">
+                        <option value="牛肉麵"></option>
+                        <option value="陽春麵"></option>
+                        <option value="餛飩麵"></option>
+                        <option value="炸醬麵"></option>
+                        <option value="其它"></option>
+                    </datalist>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" id="ok_btn">確認</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mt-3">
+                <div class="border border-2 border-warning rounded-3 p-3" id="showmsg"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            //按鈕監聽
+            $("#ok_btn").click(function(){
+                console.log($("#username").val());
+                console.log($("#nickname").val());
+
+                $("#showmsg").html("<h1>名字: " + $("#username").val() + "</h1><h1>暱稱: " + $("#nickname").val() + "</h1><h1>年齡: " + $("#age").val() + "歲</h1><h1>學歷: " + $("#edu").val() + "</h1><h1>餐點: " + $("#datalist").val() + "</h1>");
+            });
+
+            //即時監聽
+            $("#username").bind("input propertychange", function(){
+                console.log($("#username").val().length);
+                if($("#username").val().length < 6){
+                    //符合規定
+                    $("#username").removeClass("is-invalid");
+                    $("#username").addClass("is-valid");
+                }else{
+                    //不符合規定
+                    $("#username").removeClass("is-valid");
+                    $("#username").addClass("is-invalid");
+                }
+            });
+            //即時監聽
+            $("#nickname").bind("input propertychange", function(){
+                if($("#nickname").val().length > 1 && $("#nickname").val().length < 9){
+                    //符合規定
+                    $("#nickname").removeClass("is-invalid");
+                    $("#nickname").addClass("is-valid");
+                }else{
+                    //不符合規定
+                    $("#nickname").removeClass("is-valid");
+                    $("#nickname").addClass("is-invalid");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

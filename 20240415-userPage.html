@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人作品集</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        .section01 {
+            height: 100vh;
+            background-color: var(--mycolor01);
+            position: relative;
+        }
+
+        .box01 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--mycolor02);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .box02 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--mycolor03);
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .box03 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--mycolor04);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+        }
+
+        .box04 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--mycolor05);
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .logo {
+            position: absolute;
+            background-color: #1328e7;
+            top: 50px;
+            bottom: 50px;
+            left: 50px;
+            right: 50px;
+            background-image: url(images/user03.avif);
+            background-attachment: fixed;
+        }
+
+        .bg-cover {
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .user_text {
+            position: absolute;
+            top: 35%;
+            left: 52%;
+            background-color: rgba(153, 150, 150, 0.3);
+            color: aliceblue;
+            text-align: center;
+            padding: 15px;
+            border: 3px solid #d7d7db;
+            border-radius: 10px;
+            box-shadow: 2px 2px 15px 2px #d7d7db;
+        }
+
+        .user_text .h1 {
+            font-size: 72px;
+        }
+
+        .user_text p {
+            font-size: 24px;
+        }
+
+        .sectiion02 {
+            position: relative;
+            height: 360px;
+            padding: 20px;
+        }
+
+        .section02_box01 {
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            background-color: #c23a3a;
+            border-radius: 50%;
+            /* background-image: url(images/cake01.avif); */
+            background-image: linear-gradient(45deg, rgba(243, 70, 185, 0.1), rgba(243, 70, 185, 0.3)), url(images/cake01.avif);
+            left: 10%;
+            text-align: center;
+            line-height: 360px;
+        }
+
+        .section02_box01 a{
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 900;
+            color: aliceblue;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px 2px #f1f3ef;
+        }
+
+        .section02_box01 a:hover{
+            box-shadow: 2px 2px 20px 2px #97d45a;
+        }
+
+        .section02_box02 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: #c23a3a;
+            border-radius: 50%;
+            background-image: url(images/cake02.avif);
+            left: 40%;
+        }
+
+        .section02_box03 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: #c23a3a;
+            border-radius: 50%;
+            background-image: url(images/cake03.avif);
+            left: 70%;
+        }
+
+        @media screen and (max-width: 992px) {
+            .user_text {
+                left: 10%;
+                width: 250px;
+            }
+
+            .user_text .h1 {
+                font-size: 50px;
+            }
+
+            .user_text p {
+                font-size: 24px;
+            }
+
+            .logo {
+                background-image: url(images/user04.avif);
+            }
+
+            .section02_box01{
+                width: 200px;
+                height: 200px;
+                line-height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section01">
+        <div class="box01"></div>
+        <div class="box02"></div>
+        <div class="box03"></div>
+        <div class="box04"></div>
+        <div class="logo bg-cover"></div>
+        <div class="user_text">
+            <div class="h1">王小名</div>
+            <hr>
+            <div class="h2">認真負責</div>
+            <p>都要幫忙促進雜誌傳說話題對我記住國際建設，施工。</p>
+        </div>
+    </div>
+    <div class="sectiion02">
+        <div class="section02_box01 bg-cover">
+            <a href="20240408-cake_index.html" target="_blank">甜食.Sweet</a>
+        </div>
+        <div class="section02_box02 bg-cover"></div>
+        <div class="section02_box03 bg-cover"></div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

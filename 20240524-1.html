@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 練習</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <section>
+        <div class="banner bg-cover" style="background-image: url(images/landscape01.avif); height: 280px;">
+            <div class="display-4 fw-900 text-white pt-4 ps-4">農村地方美食小吃特色料理</div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6" style="margin-top: -15px;">
+                <select name="" class="form-select" id="citySelect">
+                    <option value="台中市">台中市</option>
+                    <option value="台中市">台中市</option>
+                    <option value="台中市">台中市</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" id="data_list">
+            <div class="col-md-4 mt-3">
+                <div class="card">
+                    <img src="https://ezgo.ardswc.gov.tw/Uploads/opendata/TainmaMain01/APPLY_D/20151007173924.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4>店名: XXXXX</h4>
+                        <h5>地址: XXXXXXXXX</h5>
+                        <h5>城市: XXXXXXX</h5>
+                        <p>介紹: 湖苺宴開在大湖酒莊的4樓，是大湖地區農會經營的田媽媽餐坊，但是不同於一般田園風格的田媽媽主題餐廳，主打草莓創意料理的湖苺宴，裝潢、</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var cityData; //儲存所有的縣市資料
+        var foodData; //儲存所有的美食店家資料
+        $(function () {
+            //串接縣市資料
+            $.ajax({
+                type: "GET",
+                url: "js/CityCountyData.json",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    cityData = data;
+                    console.log(cityData);
+                },
+                error: function () {
+                    alert("串接資料失敗!-js/CityCountyData.json");
+                }
+            });
+            //串接農業部資料
+            $.ajax({
+                type: "GET",
+                url: "https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvTravelFood.aspx?IsTransData=1&UnitId=193",
+                dataType: "json",
+                success: showdata,
+                error: function () {
+                    alert("串接資料失敗!-https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvTravelFood.aspx?IsTransData=1&UnitId=193");
+                }
+            });
+
+            //產生縣市下拉選單
+            $("#citySelect").empty(); //清空選單
+            cityData.forEach(function (item) {
+                console.log(item.CityName);
+                var strHTML = '<option value="' + item.CityName + '">' + item.CityName + '</option>';
+                $("#citySelect").append(strHTML);
+            });
+
+
+            //監聽選單
+            $("#citySelect").change(function () {
+                console.log($(this).val());
+                var selectedCity = $(this).val();
+                
+                $("#data_list").empty();
+                foodData.forEach(function (item) {
+                    if (item.City == selectedCity) {
+                        var strHTML = '<div class="col-md-4 mt-3"><div class="card h-100"><img src="' + item.PicURL + '" class="card-img-top" alt="..."><div class="card-body"><h4>店名: ' + item.Name + '</h4><h5>地址: ' + item.Address + '</h5><h5>城市: ' + item.City + '</h5><p>介紹: ' + item.FoodFeature.substring(0, 100) + '</p></div></div></div>';
+                        $("#data_list").append(strHTML);
+                    }
+                });
+            });
+        });
+
+        function showdata(data) {
+            console.log(data);
+            foodData = data;
+            // $("#data_list").empty();
+            // data.forEach(function(item){      
+            //     var strHTML = '<div class="col-md-4 mt-3"><div class="card h-100"><img src="'+ item.PicURL + '" class="card-img-top" alt="..."><div class="card-body"><h4>店名: '+ item.Name +'</h4><h5>地址: '+ item.Address +'</h5><h5>城市: '+ item.City +'</h5><p>介紹: '+ item.FoodFeature.substring(0, 100) +'</p></div></div></div>';
+            //     $("#data_list").append(strHTML);
+            // });
+        }
+    </script>
+</body>
+
+</html>

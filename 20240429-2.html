@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch11 表單</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="display-3 fw-900">1. checkbox(垂直)</div>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="interest01_1" name="interest01_99"
+                            value="跑步">
+                        <label for="interest01_1" class="form-check-label">跑步</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="interest02_1" name="interest01_99"
+                            value="游泳">
+                        <label for="interest02_1" class="form-check-label">游泳</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="interest03_1" name="interest01_99"
+                            value="閱讀">
+                        <label for="interest03_1" class="form-check-label">閱讀</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="interest04_1" name="interest01_99"
+                            value="發呆">
+                        <label for="interest04_1" class="form-check-label">發呆</label>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="ok_btn01">確認</button>
+            </div>
+        </div>
+
+        <div class="display-3 fw-900">2. checkbox(水平)</div>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="mb-3">
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="interest01" name="interest01">
+                        <label for="interest01" class="form-check-label">跑步</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="interest02" name="interest02">
+                        <label for="interest02" class="form-check-label">游泳</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="interest03" name="interest03">
+                        <label for="interest03" class="form-check-label">閱讀</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="interest04" name="interest04">
+                        <label for="interest04" class="form-check-label">發呆</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="display-3 fw-900">3. radio(垂直)</div>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="interest01" name="interest99">
+                        <label for="interest01" class="form-check-label">跑步</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="interest02" name="interest99">
+                        <label for="interest02" class="form-check-label">游泳</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="interest03" name="interest99">
+                        <label for="interest03" class="form-check-label">閱讀</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="interest04" name="interest99">
+                        <label for="interest04" class="form-check-label">發呆</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="display-3 fw-900">4. radio(水平)</div>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="h5 fw-900">興趣(單選): </div>
+                <div class="mb-3">
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="interest01" name="interest99_1" value="跑步">
+                        <label for="interest01" class="form-check-label">跑步</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="interest02" name="interest99_1" value="游泳">
+                        <label for="interest02" class="form-check-label">游泳</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="interest03" name="interest99_1" value="閱讀">
+                        <label for="interest03" class="form-check-label">閱讀</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="interest04" name="interest99_1" value="發呆">
+                        <label for="interest04" class="form-check-label">發呆</label>
+                    </div>
+                </div>
+                <button class="btn btn-success" id="ok_btn04">確認</button>
+            </div>
+        </div>
+
+        <div class="display-3 fw-900">5. switch(撥動開關)</div>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="mb-3 form-switch">
+                    <input type="checkbox" class="form-check-input" name="led01" id="led01">
+                    <label for="led01" class="form-check-label">開/關</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#ok_btn01").click(function () {
+                var interest = [];
+                $.each($("input[name='interest01_99']:checked"), function () {
+                    console.log($(this).val());
+                    interest.push($(this).val()); //收集checked的內容
+                });
+                console.log(interest);
+                console.log(interest.join(", "));
+            });
+
+            $("#ok_btn04").click(function () {
+                var interest;
+                $.each($("input[name='interest99_1']:checked"), function () {
+                    interest = $(this).val(); //收集checked的內容
+                });
+                console.log(interest);
+            });
+
+            $("#led01").change(function () {
+                console.log($(this).is(':checked'));
+                if ($(this).is(':checked')) {
+                    $(this).next().text("開燈");
+                    //整個頁面變黑色
+                    $("body").removeClass("bg-light");
+                    $("body").addClass("bg-dark");
+                } else {
+                    $(this).next().text("關燈");
+                    //整個頁面變白色
+                    $("body").removeClass("bg-dark");
+                    $("body").addClass("bg-light");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

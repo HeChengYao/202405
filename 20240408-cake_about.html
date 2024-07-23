@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>甜食．Sweet Cake - 關於我們</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        .banner {
+            height: 230px;
+            background-image: url(images/cake_store01.jpg);
+        }
+
+        .bg-cover {
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .timeline-section{
+            position: relative;
+        }
+        .timeline-section::before{
+            position: absolute;
+            content: "";
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background-color: #ccc;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .timeline-section-pointer{
+            position: relative;
+        }
+        .timeline-section-pointer::before{
+            position: absolute;
+            content: "";
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #f6f8f7;
+            border: 5px solid #63d82d;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+        }
+        .timeline-section-pointer:hover::before{
+            width: 25px;
+            height: 25px;
+            border: 8px solid #5d6e54;
+        }
+        @media screen and (max-width: 768px){
+            .timeline-section::before{
+                left: -10px;
+                background-color: #64027c;
+            }
+            .timeline-section-pointer::before{
+                left: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-900 text-warning" href="#">甜食．Sweet Cake</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="20240408-cake_index.html">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">關於我們</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            產品介紹
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="20240408-cake_product.html">蛋糕</a></li>
+                            <li><a class="dropdown-item" href="#">點心</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">麵包</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> -->
+            </div>
+        </div>
+    </nav>
+    <div class="banner bg-cover"></div>
+    <div class="container">
+        <div class="timeline-section">
+            <div class="row mt-3 align-items-center timeline-section-pointer">
+                <div class="col-md-6 text-center">
+                    <div class="mytext">
+                        <div class="h3 text-danger fw-900">關於我們 <small class="text-muted">about us</small></div>
+                        <p>在這家蛋糕商店的歷史長河中，每一片蛋糕都蘊含著濃郁的文化情懷，述說著這裡的故事</p>
+                        <ul class="list-unstyled">
+                            <li>這家蛋糕店散發濃郁的客家情懷。</li>
+                            <li>糕點以在地食材製成。</li>
+                            <li>口感獨特，擁有濃郁風味。</li>
+                            <li>品嚐著蛋糕，彷彿回到家鄉。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="myimg bg-cover" style="background-image: url(images/cake01.avif); height: 360px;"></div>
+                </div>
+            </div>
+            <div class="row mt-3 align-items-center flex-row-reverse timeline-section-pointer">
+                <div class="col-md-6 text-center">
+                    <div class="mytext">
+                        <div class="h3 text-danger fw-900">店家資訊 <small class="text-muted">store info.</small></div>
+                        <ul class="list-unstyled">
+                            <li>店家資訊: 這家蛋糕店名叫「客家味道」</li>
+                            <li>營業時間: 上午9點至下午6點</li>
+                            <li>地址: 中部城市的鬧區，地址是中山路123號。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="myimg bg-cover" style="background-image: url(images/cake02.avif); height: 360px;"></div>
+                </div>
+            </div>
+            <div class="row mt-3 align-items-center timeline-section-pointer">
+                <div class="col-md-6 text-center">
+                    <div class="mytext">
+                        <div class="h3 text-danger fw-900">經營理念 <small class="text-muted">store info.</small></div>
+                        <ul class="list-unstyled">
+                            <li>客家味道」秉持著樸實的烘焙傳統。</li>
+                            <li>以家鄉食材製作，彰顯濃厚鄉土情懷。</li>
+                            <li>用心經營，傳承中部文化的美好滋味。</li>
+                            <li>期許每一位顧客都能品嚐到家的溫暖。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="myimg bg-cover" style="background-image: url(images/cake03.avif); height: 360px;"></div>
+                </div>
+            </div>
+            <div class="row mt-3 align-items-center flex-row-reverse timeline-section-pointer">
+                <div class="col-md-6 text-center">
+                    <div class="mytext">
+                        <div class="h3 text-danger fw-900">產品特色 <small class="text-muted">store info.</small></div>
+                        <ul class="list-unstyled">
+                            <li>獨特口感，蛋糕擁有濃濃的客家風味。</li>
+                            <li>以當地農產品為主，味道鮮美濃郁。</li>
+                            <li>精心製作，每塊蛋糕都帶著濃郁的鄉土情懷。</li>
+                            <li>每一口都是對中部在地文化的致敬。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="myimg bg-cover" style="background-image: url(images/cake04.avif); height: 360px;"></div>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <div class="footer mt-3">
+        <div class="h5 text-bg-dark text-center py-3 fw-900">@甜食 2024</div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

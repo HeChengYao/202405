@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品建檔練習</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="pname" class="form-label">商品名稱</label>
+                            <input type="text" name="pname" id="pname" placeholder="商品名稱字數長度2~6"  class="form-control is-invalid">
+                            <div class="valid-feedback">商品名稱符合規定</div>
+                            <div class="invalid-feedback">商品名稱不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">商品價格</label>
+                            <input type="number" name="price" id="price" class="form-control" min="1" max="10000" placeholder="價格1~10000" value="100">
+                            <div class="valid-feedback">商品價格符合規定</div>
+                            <div class="invalid-feedback">商品價格不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pnum" class="form-label">商品數量</label>
+                            <input type="number" name="pnum" id="pnum" class="form-control" min="1" max="100" placeholder="數量1~100" value="10">
+                            <div class="valid-feedback">商品數量符合規定</div>
+                            <div class="invalid-feedback">商品數量不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="premark" class="form-label">商品備註</label>
+                            <textarea name="premark" id="premark" class="form-control is-invalid" placeholder="商品備註長度2~10"></textarea>
+                            <div class="valid-feedback">商品註符合規定</div>
+                            <div class="invalid-feedback">商品註不符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pimg" class="form-label">商品圖片(路徑)</label>
+                            <input type="text" name="pimg" id="pimg" class="form-control">
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-secondary">取消</button>
+                            <button class="btn btn-success" id="ok_btn">送出</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var flag_pname = false;
+        var flag_price = true;
+        var flag_pnum = true;
+        var flag_premark = false;
+        $(function(){
+            $("#pname").bind("input propertychange", function(){
+                if($(this).val().length > 1 && $(this).val().length < 7){
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_pname = true;
+                }else{
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_pname = false;
+                }
+            });
+
+            $("#price").bind("input propertychange", function(){
+                if($(this).val() > 0 && $(this).val() < 10001){
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_price = true;
+                }else{
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_price = false;
+                }
+            });
+
+            $("#pnum").bind("input propertychange", function(){
+                if($(this).val() > 0 && $(this).val() < 101){
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_pnum = true;
+                }else{
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_pnum = false;
+                }
+            });
+
+            $("#premark").bind("input propertychange", function(){
+                if($(this).val().length > 1 && $(this).val().length < 11){
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_premark = true;
+                }else{
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_premark = false;
+                }
+            });
+
+            $("#ok_btn").click(function(){
+                if(flag_pname && flag_price && flag_pnum && flag_premark){
+                    console.log($("#pname").val());
+                    console.log($("#price").val());
+                    console.log($("#pnum").val());
+                    console.log($("#premark").val());
+                    console.log($("#pimg").val());
+                    //傳遞至後端
+                    $.ajax({
+                        type: "POST",
+                        url: "20240603-insertDB.php",
+                        data: {pname: $("#pname").val(), price: $("#price").val(), pnum: $("#pnum").val(), premark: $("#premark").val(), pimg: $("#pimg").val()},
+                        success: showdata,
+                        error: function(){
+                            alert("error-20240603-insertDB.php");
+                        }
+                    });
+                }else{
+                    alert("欄位錯誤, 請修正!");
+                    // console.log(flag_pname);
+                    // console.log(flag_price);
+                    // console.log(flag_pnum);
+                    // console.log(flag_premark);
+                }
+            });
+        });
+
+        function showdata(data){
+            alert(data);
+        }
+    </script>
+</body>
+</html>

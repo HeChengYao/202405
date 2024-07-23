@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11. 表單</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="display-4 fw-900">1. 表單樣式(form-label, form-control, form-text)</div>
+        <div class="row">
+            <div class="col-12 mt-3">
+                <div class="border border-4 p-2 m-2 rounded-3">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">帳號</label>
+                        <input type="text" class="form-control form-control-lg" id="username" name="username">
+                        <div class="form-text">你所輸入的內容將不會被記錄!</div>
+                    </div>
+                    <div class="text-end">
+                        <button class="btn btn-danger">取消</button>
+                        <button class="btn btn-primary">確認</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-3">
+                <div class="border border-4 p-2 m-2 rounded-3">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <label for="username" class="form-label">帳號</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" id="username" name="username">
+                        </div>
+                        <div class="col-auto">
+                            <div class="form-text">你所輸入的內容將不會被記錄!</div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-danger">取消</button>
+                        <button class="btn btn-primary">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="display-4 fw-900">2. file</div>
+        <div class="row">
+            <div class="col-12">
+                <div class="border border-4 p-2 m-2 rounded-3">
+                    <div class="mb-3">
+                        <label for="file01" class="form-label">請選取檔案(單一)</label>
+                        <input type="file" class="form-control" id="file01" name="file01">
+                    </div>
+                    <div class="mb-3">
+                        <label for="file01" class="form-label">請選取檔案(多重檔案)</label>
+                        <input type="file" class="form-control" id="file01" name="file01" multiple>
+                    </div>
+                    <div class="mb-3">
+                        <label for="file01" class="form-label">請選取檔案(多重檔案)(禁用)</label>
+                        <input type="file" class="form-control" id="file01" name="file01" multiple disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="file01" class="form-label">請選取檔案(多重檔案)(尺寸大)</label>
+                        <input type="file" class="form-control form-control-lg" id="file01" name="file01" multiple>
+                    </div>
+                    <div class="mb-3">
+                        <label for="file01" class="form-label">請選取檔案(多重檔案)(尺寸小)</label>
+                        <input type="file" class="form-control form-control-sm" id="file01" name="file01" multiple>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="display-4 fw-900">3. Datalists</div>
+        <div class="row">
+            <div class="border border-4 p-2 m-2 rounded-3">
+                <div class="mb-3">
+                    <label for="foodlist" class="form-label">我的美食紀錄</label>
+                    <input type="text" class="form-control" id="foodlist" name="foodlist" list="dataOption">
+                    <datalist id="dataOption">
+                        <option value="牛肉麵"></option>
+                        <option value="便當"></option>
+                        <option value="漢堡"></option>
+                        <option value="雞肉"></option>
+                    </datalist>
+                </div>
+            </div>
+        </div>
+
+        <div class="display-4 fw-900">4. Select(下拉選單)</div>
+        <div class="row">
+            <div class="border border-4 p-2 m-2 rounded-3">
+                <div class="mb-3">
+                    <label for="theCity" class="form-label">請選擇縣市</label>
+                    <select class="form-select" name="theCity" id="theCity">
+                        <option value="台中市">台中市</option>
+                        <option value="彰化縣">彰化縣</option>
+                        <option value="雲林縣">雲林縣</option>
+                        <option value="嘉義縣">嘉義縣</option>
+                        <option value="台南市">台南市</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="border border-4 p-2 m-2 rounded-3">
+                <div class="mb-3">
+                    <label for="theCity" class="form-label">請選擇縣市(複選)</label>
+                    <select class="form-select form-select-lg" name="theCity" id="theCity" multiple size="5">
+                        <option value="台中市">台中市</option>
+                        <option value="彰化縣">彰化縣</option>
+                        <option value="雲林縣">雲林縣</option>
+                        <option value="嘉義縣">嘉義縣</option>
+                        <option value="台南市">台南市</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+</body>
+
+</html>

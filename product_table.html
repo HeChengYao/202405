@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品管理控制台 - 產品列表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-900" href="#">產品管理控制台</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="product_index.html">新增產品</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="product_table.html">產品列表</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="20240722-map-hotel.html">地圖</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <button class="btn btn-secondary d-none" id="s02_logout_btn">登出</button>
+                    <span class="text-danger h3" id="s02_user_text"></span>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 pt-5">
+                <table class="table table-striped table-bordered table-rwd">
+                    <caption>產品列表</caption>
+                    <thead>
+                        <tr>
+                            <th>產品編號</th>
+                            <th>產品圖片</th>
+                            <th>產品名稱</th>
+                            <th>產品價格</th>
+                            <th>產品數量</th>
+                            <th>產品備註</th>
+                            <th>建檔時間</th>
+                            <th>-</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mydata">
+                        <tr>
+                            <td data-th="產品編號">001</td>
+                            <td data-th="產品圖片">
+                                <img src="https://images.unsplash.com/photo-1548460464-2a68877c7a5f?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa"
+                                    width="150px" alt="">
+                            </td>
+                            <td data-th="產品名稱">玫瑰花</td>
+                            <td data-th="產品價格">90</td>
+                            <td data-th="產品數量">10</td>
+                            <td data-th="產品備註">好看</td>
+                            <td data-th="建檔時間">2024-06-17 15:46:25</td>
+                            <td>
+                                <button class="btn btn-outline-success w-100 mb-2">更新</button>
+                                <button class="btn btn-outline-danger w-100">刪除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- updateModal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-bg-success">
+                    <h1 class="modal-title fs-5 fw-900" id="exampleModalLabel">產品更新</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="pname" class="form-label">產品名稱</label>
+                        <input type="text" class="form-control" id="pname" name="pname" placeholder="字數2~5">
+                        <div class="valid-feedback">符合規定</div>
+                        <div class="invalid-feedback">符合規定</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">產品價格(元)</label>
+                        <input type="number" class="form-control" id="price" name="price" placeholder="1~1000元" min="1">
+                        <div class="valid-feedback">符合規定</div>
+                        <div class="invalid-feedback">符合規定</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pnum" class="form-label">產品數量(個)</label>
+                        <input type="number" class="form-control" id="pnum" name="pnum" placeholder="1~100個" min="1"
+                            disabled>
+                        <div class="valid-feedback">符合規定</div>
+                        <div class="invalid-feedback">符合規定</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="premark" class="form-label">產品備註</label>
+                        <textarea name="premark" id="premark" class="form-control" placeholder="字數2~10"
+                            disabled></textarea>
+                        <div class="valid-feedback">符合規定</div>
+                        <div class="invalid-feedback">符合規定</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pimg" class="form-label">產品圖片(路徑)</label>
+                        <input type="text" class="form-control" id="pimg" name="pimg" disabled>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="btn_update_updateModal">確認更新</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var flag_pname = true;
+        var flag_price = true;
+
+        var u_id;
+        $(function () {
+            //檢查cookie 是否已存在uid 並確認是否合法
+            if (getCookie("UID01") != "") {
+                //uid傳至後端檢查是否合法
+                //轉換成json格式
+                var dataJSON = {}; //物件
+                dataJSON["uid01"] = getCookie("UID01");
+
+                console.log(JSON.stringify(dataJSON));
+                //傳遞至後端api
+                $.ajax({
+                    type: "POST",
+                    url: "member_check_uid-api.php",
+                    data: JSON.stringify(dataJSON),
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: showdata_check_uid,
+                    error: function () {
+                        alert("error-member_check_uid-api.php");
+                    }
+                });
+
+            } else {
+                alert("必須先登入會員!");
+                location.href = "20240510-SPA.html";
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "product_R_api.php",
+                dataType: "json",
+                async: false,
+                success: showdata,
+                error: function () {
+                    alert("error-product_R_api.php");
+                }
+            });
+
+            //更新#btn_update 監聽
+            $("#mydata #btn_update").click(function () {
+                console.log($(this).data("id"));
+                console.log($(this).data("pname"));
+                console.log($(this).data("price"));
+                console.log($(this).data("pnum"));
+                console.log($(this).data("premark"));
+                console.log($(this).data("pimg"));
+                console.log($(this).data("created_at"));
+
+                //更新至update modal 表單
+                $("#pname").val($(this).data("pname"));
+                $("#price").val($(this).data("price"));
+                $("#pnum").val($(this).data("pnum"));
+                $("#premark").val($(this).data("premark"));
+                $("#pimg").val($(this).data("pimg"));
+
+                u_id = $(this).data("id");
+            });
+
+            //刪除#btn_delete 監聽
+            $("#mydata #btn_delete").click(function () {
+                if (confirm("確認刪除此筆資料?")) {
+                    if (confirm("真的要刪除此筆資料?")) {
+                        console.log($(this).data("id"));
+
+                        //傳遞至後端API 更新
+                        //轉換成json格式
+                        var dataJSON = {}; //物件
+                        dataJSON["ID"] = $(this).data("id");
+                        //傳遞至後端api
+                        $.ajax({
+                            type: "POST",
+                            url: "product_D_api.php",
+                            data: JSON.stringify(dataJSON),
+                            contentType: "application/json;charset=utf-8",
+                            dataType: "json",
+                            success: showdata_delete,
+                            error: function () {
+                                alert("error-product_D_api.php");
+                            }
+                        });
+                    }
+                }
+            });
+
+
+
+
+
+            //即時監聽pname
+            $("#pname").bind("input propertychange", function () {
+                // console.log($(this).val());
+                if ($(this).val().length > 1 && $(this).val().length < 6) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_pname = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_pname = false;
+                }
+            });
+
+            //即時監聽price
+            $("#price").bind("input propertychange", function () {
+                // console.log($(this).val());
+                if ($(this).val() > 0 && $(this).val() < 1001) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_price = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_price = false;
+                }
+            });
+
+            //監聽 #btn_update_updateModal
+            $("#btn_update_updateModal").click(function () {
+                if (flag_pname && flag_price) {
+                    console.log($("#pname").val());
+                    console.log($("#price").val());
+                    //傳遞至後端API 更新
+                    //轉換成json格式
+                    var dataJSON = {}; //物件
+                    dataJSON["ID"] = u_id;
+                    dataJSON["pname"] = $("#pname").val();
+                    dataJSON["price"] = $("#price").val();
+                    console.log(JSON.stringify(dataJSON));
+
+                    //傳遞至後端api
+                    $.ajax({
+                        type: "POST",
+                        url: "product_U_api.php",
+                        data: JSON.stringify(dataJSON),
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: showdata_update,
+                        error: function () {
+                            alert("error-product_U_api.php");
+                        }
+                    });
+
+                } else {
+                    alert("欄位錯誤,請修正!");
+                }
+            });
+
+            //#s02_logout_btn 登出按鈕間聽
+            $("#s02_logout_btn").click(function () {
+                setCookie("UID01", "", 7);
+                location.href = "20240510-SPA.html";
+            });
+
+        });
+
+        function showdata(data) {
+            // console.log(data);
+            if (data.state) {
+                //   alert(data.message);
+
+                $("#mydata").empty();
+                data.data.forEach(function (item) {
+                    var strHTML = '<tr><td data-th="產品編號">' + item.ID + '</td><td data-th="產品圖片"><img src="' + item.Pimg + '" width="150px" alt=""></td><td data-th="產品名稱">' + item.Pname + '</td><td data-th="產品價格">' + item.Price + '</td><td data-th="產品數量">' + item.Pnum + '</td><td data-th="產品備註">' + item.Premark + '</td><td data-th="建檔時間">' + item.Created_at + '</td><td><button class="btn btn-outline-success w-100 mb-2" data-bs-toggle="modal" data-bs-target="#updateModal" data-id="' + item.ID + '" data-pname="' + item.Pname + '" data-price="' + item.Price + '" data-pnum="' + item.Pnum + '" data-premark="' + item.Premark + '" data-pimg="' + item.Pimg + '" data-created_at="' + item.Created_at + '" id="btn_update">更新</button><button class="btn btn-outline-danger w-100" data-id="' + item.ID + '" id="btn_delete">刪除</button></td></tr>';
+
+                    $("#mydata").append(strHTML);
+                });
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function showdata_update(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "product_table.html";
+
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function showdata_delete(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "product_table.html";
+
+            } else {
+                alert(data.message);
+            }
+        }
+
+
+        function showdata_check_uid(data) {
+            console.log(data);
+            if (data.state) {
+                //顯示登入者歡迎資訊
+                $("#s02_user_text").html('歡迎會員: <span class="h2 text-success fw-900 ">' + data.data.Username + '</span> ');
+
+                //顯示登出按鈕
+                $("#s02_logout_btn").removeClass("d-none");
+            }
+            else {
+                location.href = "20240510-SPA.html";
+            }
+        }
+        //form w3c
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+
+</html>

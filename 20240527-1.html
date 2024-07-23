@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>串接資料練習 - 臺中市景點</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <section>
+        <div class="banner bg-cover" style="background-image: url(images/landscape04.avif); height: 280px;"></div>
+    </section>
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top: -18px;">
+            <div class="col-4">
+                <select name="" class="form-select" id="citySelect">
+                    <option value="台中市" >台中市</option>
+                    <option value="台北市">台北市</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <select name="" class="form-select" id="townSelect">
+                    <option value="" selected disabled>--請選擇鄉鎮區名稱--</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" id="mylist">
+            <div class="col-md-4 mt-3">
+                <div class="card">
+                    <img src="https://taiwan.taiwanstay.net.tw/twpic/140650.jpg" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <div class="h5 fw-900">名稱: XXXX</div>
+                        <div class="h5 fw-900">地址: XXXX</div>
+                        <div class="h5 fw-900">電話: XXXX</div>
+                        <div class="h5 fw-900">停車資訊: XXXX</div>
+                        <div class="h5 fw-900">簡介: 興奮投資求助之類，不需要基礎感到禮品股份信箱傳說表演專題方案，辦理晚上另一她說屏東警察，類型秘密情。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var allData; //台中市景點所有的資料
+        var cityCounty; //全國縣市相關資料
+        var cityselected; //已選取的縣市名稱
+        var townselected; //已選取的鄉鎮區名稱
+        $(function () {
+            //串接全國旅館資料 opendata
+            $.ajax({
+                type: "GET",
+                url: "js/hotel_C_f.json",
+                //dataType: "json",
+                async: false,
+                success: function (data) {
+                    allData = data.XML_Head.Infos.Info;
+                },
+                error: function(){
+                    alert("error - js/hotel_C_f.json");
+                }
+            });
+
+            //串接全國縣市資料 opendata
+            $.ajax({
+                type: "GET",
+                url: "js/CityCountyData.json",
+                async: false,
+                dataType: "json",
+                success: function(data){
+                    cityCounty = data;
+                }
+            });
+
+            //產生縣市SELECT選單
+            $("#citySelect").empty();
+            $("#citySelect").append('<option value="" selected disabled>--請選擇縣市名稱--</option>');
+            cityCounty.forEach(function(item){
+                var strHTML = '<option value="' + item.CityName + '">' + item.CityName + '</option>';
+                $("#citySelect").append(strHTML);
+            });
+
+            //監聽縣市SELECT選單 ==> 產生鄉鎮區選單
+            $("#citySelect").change(function(){
+                console.log($(this).val());
+                cityselected = $(this).val();
+                console.log(cityselected);
+
+                cityCounty.forEach(function(item){
+                    if(item.CityName == cityselected){
+                        console.log(item);
+                        
+                        //產生鄉鎮區選單
+                        $("#townSelect").empty();
+                        $("#townSelect").append('<option value="" selected disabled>--請選擇鄉鎮區名稱--</option>');
+                        item.AreaList.forEach(function(town){
+                            console.log(town.AreaName);
+
+                            var strHTML = '<option value="' + town.AreaName + '">' + town.AreaName + '</option>';
+                            $("#townSelect").append(strHTML);
+                        });
+                    }
+                });
+            });
+
+
+            //監聽鄉鎮區選單
+            $("#townSelect").change(function(){
+                console.log($(this).val());
+                townselected = $(this).val();
+                console.log(townselected);
+
+                //篩選符合縣市鄉鎮區位置的旅館
+                $("#mylist").empty();
+                allData.forEach(function(item){
+                    if(item.Region == cityselected && item.Town == townselected){
+                        console.log(item);
+                        var pic;
+                        if(item.Picture1 == ""){
+                            pic = 'https://fakeimg.pl/300x200/200'
+                        }else{
+                            pic = item.Picture1;
+                        }
+                        var strHTML = '<div class="col-md-4 mt-3"><div class="card h-100"><img src="'+ pic + '" class="card-img-top" alt=""><div class="card-body"><div class="h5 fw-900">名稱: '+ item.Name + '</div><div class="h5 fw-900">地址: '+ item.Add + '</div><div class="h5 fw-900">電話: '+ item.Tel + '</div><div class="h5 fw-900">停車資訊: '+ item.Parkinginfo + '</div><div class="h5 fw-900">簡介: ' + item.Description.substring(0, 50) + '</div></div></div></div>';
+                        $("#mylist").append(strHTML);
+                    }
+                });
+            });
+            
+            console.log(allData);
+            console.log(cityCounty);
+
+        });
+    </script>
+</body>
+
+</html>

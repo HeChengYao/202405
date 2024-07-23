@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>串接後端api練習</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-4">
+                <ul class="list-group" id="mylist">
+                    <li class="list-group-item">
+                        <div class="h3">名稱: XXX</div>
+                        <div class="h4">數量: XXX</div>
+                        <div class="h4">價格: XXXX</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "20240603-connDB.php",
+                dataType: "json",
+                success: showdata,
+                error: function () {
+                    alert("error-20240603-connDB.php");
+                }
+            });
+        });
+        function showdata(data) {
+            console.log(data);
+
+            $("#mylist").empty();
+            data.forEach(function(item){
+                var strHTML = '<li class="list-group-item"><div class="h3">名稱: '+ item.Pname+'</div><div class="h4">數量: '+ item.Pnum+'</div><div class="h4">價格: '+item.Price+'</div></li>';
+                $("#mylist").append(strHTML);
+            });
+        }
+    </script>
+</body>
+
+</html>

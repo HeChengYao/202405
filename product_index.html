@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品管理控制台 - 產品建檔</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-900" href="#">產品管理控制台</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="product_index.html">新增產品</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_table.html">產品列表</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row justify-content-center pt-5">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body shadow-lg">
+                        <div class="mb-3">
+                            <label for="pname" class="form-label">產品名稱</label>
+                            <input type="text" class="form-control" id="pname" name="pname" placeholder="字數2~5">
+                            <div class="valid-feedback">符合規定</div>
+                            <div class="invalid-feedback">符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">產品價格(元)</label>
+                            <input type="number" class="form-control" id="price" name="price" placeholder="1~1000元"
+                                min="1">
+                            <div class="valid-feedback">符合規定</div>
+                            <div class="invalid-feedback">符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pnum" class="form-label">產品數量(個)</label>
+                            <input type="number" class="form-control" id="pnum" name="pnum" placeholder="1~100個"
+                                min="1">
+                            <div class="valid-feedback">符合規定</div>
+                            <div class="invalid-feedback">符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="premark" class="form-label">產品備註</label>
+                            <textarea name="premark" id="premark" class="form-control" placeholder="字數2~10"></textarea>
+                            <div class="valid-feedback">符合規定</div>
+                            <div class="invalid-feedback">符合規定</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pimg" class="form-label">產品圖片(路徑)</label>
+                            <input type="text" class="form-control" id="pimg" name="pimg">
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-outline-danger">取消</button>
+                            <button class="btn btn-success" id="ok_btn">確認</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var flag_pname = false;
+        var flag_price = false;
+        var flag_pnum = false;
+        var flag_premark = false;
+
+        $(function () {
+            //即時監聽pname
+            $("#pname").bind("input propertychange", function () {
+                // console.log($(this).val());
+                if ($(this).val().length > 1 && $(this).val().length < 6) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_pname = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_pname = false;
+                }
+            });
+
+            //即時監聽price
+            $("#price").bind("input propertychange", function () {
+                // console.log($(this).val());
+                if ($(this).val() > 0 && $(this).val() < 1001) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_price = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_price = false;
+                }
+            });
+
+            //即時監聽pnum
+            $("#pnum").bind("input propertychange", function () {
+                // console.log($(this).val());
+                if ($(this).val() > 0 && $(this).val() < 101) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_pnum = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_pnu = false;
+                }
+            });
+
+            //即時監聽premark
+            $("#premark").bind("input propertychange", function () {
+                // console.log($(this).val());
+                if ($(this).val().length > 1 && $(this).val().length < 11) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_premark = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_premark = false;
+                }
+            });
+
+            //按鈕監聽ok_btn
+            $("#ok_btn").click(function () {
+                if (flag_pname && flag_price && flag_pnum && flag_premark) {
+                    console.log($("#pname").val());
+                    console.log($("#price").val());
+                    console.log($("#pnum").val());
+                    console.log($("#premark").val());
+                    console.log($("#pimg").val());
+
+                    //轉換成json格式
+                    var dataJSON = {}; //物件
+                    dataJSON["pname"] = $("#pname").val();
+                    dataJSON["price"] = $("#price").val();
+                    dataJSON["pnum"] = $("#pnum").val();
+                    dataJSON["premark"] = $("#premark").val();
+                    dataJSON["pimg"] = $("#pimg").val();
+
+                    console.log(JSON.stringify(dataJSON));
+                    //傳遞至後端api
+                    $.ajax({
+                        type: "POST",
+                        url: "product_C_api_v1.php",
+                        data: JSON.stringify(dataJSON),
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: showdata,
+                        error: function () {
+                            alert("error-product_C_api_v1.php");
+                        }
+                    });
+                } else {
+                    alert("欄位有錯誤, 請修正!");
+                }
+            });
+        });
+        function showdata(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                //清空所有欄位
+                // $("#pname").val("");
+                // $("#price").val("");
+                // $("#pnum").val("");
+                // $("#premark").val("");
+                // $("#pimg").val("");
+
+                location.href = "product_index.html";
+
+            } else {
+                alert(data.message);
+            }
+        }
+    </script>
+</body>
+
+</html>

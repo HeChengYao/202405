@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch11. 表單練習</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-4">
+                <div class="mb-3">
+                    <label for="username" class="form-label">姓名</label>
+                    <input type="text" class="form-control is-invalid" id="username" name="username"
+                        placeholder="字數2~6字!">
+                    <div class="valid-feedback">帳號字數符合規定!</div>
+                    <div class="invalid-feedback">帳號字數不符合規定!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="nickname" class="form-label">暱稱</label>
+                    <input type="text" class="form-control is-invalid" id="nickname" name="nickname"
+                        placeholder="字數1~5字!">
+                    <div class="valid-feedback">暱稱字數符合規定!</div>
+                    <div class="invalid-feedback">暱稱字數不符合規定!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="form-label">年齡(需成年)</label>
+                    <input type="number" class="form-control is-invalid" id="age" name="age" min="0" max="100"
+                        value="12">
+                    <div class="valid-feedback">已成年!</div>
+                    <div class="invalid-feedback">未成年!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="edu" class="form-label">學歷</label>
+                    <select name="edu" id="edu" class="form-select">
+                        <option value="碩士">碩士</option>
+                        <option value="大學(專)">大學(專)</option>
+                        <option value="高中職">高中職</option>
+                        <option value="其它">其它</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="food" class="form-label">餐點</label>
+                    <input type="text" class="form-control is-invalid" id="food" name="food" list="food_list"
+                        placeholder="字數2~10字!">
+                    <datalist id="food_list">
+                        <option value="漢堡"></option>
+                        <option value="薯條"></option>
+                        <option value="可樂"></option>
+                        <option value="炸機"></option>
+                    </datalist>
+                    <div class="valid-feedback">餐點字數符合規定!</div>
+                    <div class="invalid-feedback">餐點字數不符合規定!</div>
+                </div>
+                <div class="h5 fw-900">興趣(複選): </div>
+                <div class="mb-3">
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="interest01_1" name="interest01_99"
+                            value="跑步">
+                        <label for="interest01_1" class="form-check-label">跑步</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="interest02_1" name="interest01_99"
+                            value="游泳">
+                        <label for="interest02_1" class="form-check-label">游泳</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="interest03_1" name="interest01_99"
+                            value="閱讀">
+                        <label for="interest03_1" class="form-check-label">閱讀</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="interest04_1" name="interest01_99"
+                            value="發呆">
+                        <label for="interest04_1" class="form-check-label">發呆</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    XXX(複選02)
+                </div>
+                <div class="mb-3">
+                    XXX(單選01)
+                </div>
+                <div class="h5 fw-900">興趣(單選): </div>
+                <div class="mb-3">
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="interest01" name="interest99_1" value="跑步">
+                        <label for="interest01" class="form-check-label">跑步</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="interest02" name="interest99_1" value="游泳">
+                        <label for="interest02" class="form-check-label">游泳</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="interest03" name="interest99_1" value="閱讀">
+                        <label for="interest03" class="form-check-label">閱讀</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="interest04" name="interest99_1" value="發呆">
+                        <label for="interest04" class="form-check-label">發呆</label>
+                    </div>
+                </div>
+                <div class="h3">會員守則</div>
+                <div class="userText overflow-scroll" style="height: 300px;">
+                    1.
+                    小遊戲那個，傳來位置經典擴大整理家園對於轉換我的心放心爭取就算整合，高雄三年本報左右背後主題陽明山主題研究生法律這個問題，一級螢幕人氣付出屬於性格程式股票戀愛有利於存在，鎖定返回教育首頁相當，初音要是只是好多技術，登錄對你適合價值這個需求本站知道課堂觀看必要描述，影響兩次眼神用戶名，客人我國，新型對話暴力網頁課程，全市服飾損失渠道防止代理人口效果草魚玩家教授習慣飯店，十分感情有些預防羅東因此大門。
+                    2.
+                    文字有可能顧客第三再度應用，指定關西停止釣魚老公規律主席家園焦點警方，北方細胞都會總結有一種平均我真主體遺憾操作系統著名流行精華，短信騎士不是很購物，排名那麼低價到來鍵盤投入檢驗四周言論我看公園，股權郵件今日，鄉民很大商品感受宣佈創作視頻訊息網上看來教授國務院新鮮，改造公里無關主營強大信號工作主管還是普通電器一番演員，設計定義，熱門圖書相互尊重，那天一級看到淡淡秘密，快樂逐漸有一種不論圖形不錯豪華指南台中，後來禮物因素適合威脅同一查找共享交易兩種熱點影視第二受傷，嘗試產權資訊網所有給予，情緒傳真作出多次衣服夫妻我家協助插入對面成本，和諧夫妻漫畫不肯此外，指出屏東最大國家這款禮品不會，本人註明。
+                    3.
+                    相比便是韓國電子郵件十分超級今年總結我在一段好看工藝風景，另一個經歷對外大全這些是啊一笑，歲月是我停止這裡，這個老婆祝福近日電話考慮情感，一本兩位原始碼自主一句歡迎光臨增長專利並沒有，為什麼它是，和。
+                </div>
+                <div class="my-3 form-switch">
+                    <input type="checkbox" class="form-check-input" name="Utext" id="Utext">
+                    <label for="Utext" class="form-check-label text-danger">不遵守</label>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-secondary" id="canacel_btn">取消</button>
+                    <button class="btn btn-success" id="ok_btn">確認</button>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="border border-2 border-warning p-3 rounded-3 mt-5 shadow-lg" id="showmsg"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var flag_username = false;
+        var flag_nickname = false;
+        var flag_age = false;
+        var flag_food = false;
+        var flag_Utext = false;
+        $(function () {
+            //即時監聽
+            $("#username").bind("input propertychange", function () {
+                console.log($(this).val().length);
+                if ($(this).val().length > 1 && $(this).val().length < 7) {
+                    //符合
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_username = true;
+                } else {
+                    //不符合
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_username = false;
+                }
+            });
+
+            //即時監聽 #nickname
+            $("#nickname").bind("input propertychange", function () {
+                console.log($(this).val().length);
+                if ($(this).val().length > 0 && $(this).val().length < 6) {
+                    //符合
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_nickname = true;
+                } else {
+                    //不符合
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_nickname = false;
+                }
+            });
+
+            //即時監聽 #age
+            $("#age").bind("input propertychange", function () {
+                console.log($(this).val());
+                if ($(this).val() > 17) {
+                    //符合
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_age = true;
+                } else {
+                    //不符合
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_age = false;
+                }
+            });
+
+            //即時監聽 #food
+            $("#food").bind("input propertychange", function () {
+                console.log($(this).val().length);
+                if ($(this).val().length > 1 && $(this).val().length < 11) {
+                    //符合
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_food = true;
+                } else {
+                    //不符合
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_food = false;
+                }
+            });
+
+            $("#Utext").change(function () {
+                if ($(this).is(":checked")) {
+                    //遵守
+                    $(this).next().html('<span class="text-success fw-900">遵守會員守則!<span>');
+                    flag_Utext = true;
+                } else {
+                    //不遵守
+                    $(this).next().html('<span class="text-danger fw-900">不遵守會員守則!<span>');
+                    flag_Utext = false;
+                }
+            });
+
+            //按鈕監聽#ok_btn
+            $("#ok_btn").click(function () {
+                if (flag_Utext) {
+                    //遵守會員守則!
+                    if (flag_username && flag_nickname && flag_age && flag_food) {
+                        //興趣(複選)
+                        var interest = [];
+                        $.each($("input[name='interest01_99']:checked"), function () {
+                            interest.push($(this).val()); //收集checked的內容
+                        });
+                        console.log(interest.join(", "));
+
+                        //興趣(單選)
+                        var interest01;
+                        $.each($("input[name='interest99_1']:checked"), function () {
+                            interest01 = $(this).val(); //收集checked的內容
+                        });
+                        console.log(interest01);
+
+                        $("#showmsg").html("<h3>姓名: " + $("#username").val() + "</h3><h3>暱稱: " + $("#nickname").val() + "</h3><h3 >年齡: " + $("#age").val() + "</h3><h3>學歷: " + $("#edu").val() + "</h3><h3>餐點: " + $("#food").val() + "</h3><h3>興趣(複選): " + interest.join(", ") + "</h3><h3>興趣(單選): " + interest01 + "</h3>");
+                    } else {
+                        alert("欄位錯誤, 請修正!");
+                        $("#showmsg").html("");
+                    }
+                } else {
+                    //不遵守會員守則!
+                    alert("必須遵守會員守則!始能填寫資料")
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

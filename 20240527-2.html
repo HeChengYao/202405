@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>串接資料練習 - YouBike2.0臺北市公共自行車即時資訊</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <section>
+        <div class="banner bg-cover" style="background-image: url(images/landscape04.avif); height: 280px;"></div>
+    </section>
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top: -18px;">
+            <div class="col-4">
+                <select name="" class="form-select" id="citySelect">
+                    <option value="台中市">台中市</option>
+                    <option value="台北市">台北市</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" id="mylist">
+            <div class="col-md-4 mt-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="h5 fw-900">名稱: XXXX</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var alldata;
+        var cityCounty;
+        var areaSelected;
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json",
+                dataType: "json",
+                success: function (data) {
+                    alldata = data;
+                    console.log(alldata);
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+
+            //串接全國縣市資料 opendata
+            $.ajax({
+                type: "GET",
+                url: "js/CityCountyData.json",
+                async: false,
+                dataType: "json",
+                success: function (data) {
+                    cityCounty = data;
+                    console.log(cityCounty);
+                }
+            });
+
+            //產生台北市行政區SELECT選單
+            $("#citySelect").empty();
+            $("#citySelect").append('<option value="" selected disabled>--請選擇台北市行政區名稱--</option>');
+            cityCounty.forEach(function (item) {
+                if (item.CityName == "臺北市") {
+                    console.log(item);
+                    item.AreaList.forEach(function (area) {
+                        var strHTML = '<option value="' + area.AreaName + '">' + area.AreaName + '</option>';
+                        $("#citySelect").append(strHTML);
+                    });
+                }
+            });
+
+             //監聽台北市行政區SELECT選單
+             $("#citySelect").change(function(){
+                console.log($(this).val());
+                areaSelected = $(this).val();
+
+                //篩選資料
+                $("#mylist").empty();
+                alldata.forEach(function(item){
+                    if(item.sarea == areaSelected){
+                        console.log(item);
+
+                        var strHTML = '<div class="col-md-4 mt-3"><div class="card"><div class="card-body"><div class="h5 fw-900">名稱: '+ item.sna +'</div></div></div></div>';
+                        $("#mylist").append(strHTML);
+                    } 
+                });
+             });
+        });
+    </script>
+</body>
+
+</html>
